@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "11847569669",
+    "project_id": "dmi-firebase-8150b",
+    "storage_bucket": "dmi-firebase-8150b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11847569669:android:a98722ccfc4b7237a1e76c",
+        "android_client_info": {
+          "package_name": "com.dmi.githubactiondemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11847569669-0e5gu9metgst25ujh5ogtp0nuqh71jv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZofSWJfw32wmOIufpcjdgSf2zoh7SnVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11847569669-0e5gu9metgst25ujh5ogtp0nuqh71jv7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "11847569669-m8udsukrr14a1h5diebdm3nm1kpeegna.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.connectedfitnesslabs.wexerapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
