@@ -44,7 +44,7 @@ platform :android do
     )
 
     set_github_release(
-      repository_name: "Yogiyadavmca/github-action",
+      repository_name: "github-action",
       api_token: ENV["ACCESS_TOKEN"],
       tag_name: "v0.0.2",
       name: "Super New actions",      
