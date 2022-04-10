@@ -42,6 +42,14 @@ platform :android do
       release_notes: "Lots of amazing new features to test out!",
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
+
+    set_github_release(
+      repository_name: "Yogiyadavmca/github-action",
+      api_token: ENV["ACCESS_TOKEN"],
+      name: "Super New actions",      
+      description: (File.read("changelog") rescue "No changelog provided"),
+      commitish: "main"
+    )
   end
 
 end
