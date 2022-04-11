@@ -6,6 +6,13 @@ name: Android Firebase Release
 on:    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      app_version:
+        description: The version of the app to deploy
+        required: true
+        type: string
+        default: '1.0.0'
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,6 +40,14 @@ jobs:
 
       - name: Setup Yarn
         uses: c-hive/gha-yarn-cache@v1
+
+      - name: Bump version
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: android/app/build.gradle # or app/build.gradle.kts
+          versionCode: ${{github.run_number}}
+          versionName: ${{ github.event.inputs.app_version }}
+  
 
       - name: Install Node modules
         run: yarn install  
