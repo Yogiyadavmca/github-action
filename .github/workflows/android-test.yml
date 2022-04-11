@@ -13,9 +13,9 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build_fastlane:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -59,3 +59,41 @@ jobs:
 
       - name: Build Android using Fastlane
         run: cd android && bundle exec fastlane build  
+
+  build_gradle:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest    
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@master      
+
+      - name: Setup Yarn
+        uses: c-hive/gha-yarn-cache@v1
+
+      - name: Install Node modules
+        run: yarn install  
+
+      - name: Cache Gradle Wrapper
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-caches-
+
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+
+      - name: Build Android using Fastlane
+        run: cd android && ./gradlew bundleRelease --no-daemon  
